@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform followTarget;
     [SerializeField] FloatingJoystick joystick;
 
-    private Rigidbody rigidbody;
+    private new Rigidbody rigidbody;
 
     PhotonView view;
 
@@ -32,12 +32,7 @@ public class PlayerController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
     }
 
-    private void FixedUpdate()
-    {
-        Movement();
-    }
-
-    void Movement()
+    private void Update()
     {
         Vector2 verticalInput = joystick.Direction;
 
