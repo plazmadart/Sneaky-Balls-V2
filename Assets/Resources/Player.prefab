@@ -415,9 +415,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 8350701418821479615}
-  distance: 3
+  distance: 4
   height: 0.7
   moveSpeed: 0.125
+  angleClamp: 15
+  sensitivity: 5
 --- !u!1 &5085631639719648967
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +501,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   followCamera: {fileID: 3003977860147026599}
-  rotationSpeed: 2
   followTarget: {fileID: 8350701418821479615}
   joystick: {fileID: 9121436539246566309}
   scriptPlayerController: {fileID: 6823916586058132506}
