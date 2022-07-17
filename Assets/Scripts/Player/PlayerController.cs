@@ -6,11 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private Camera followCamera;
-    [SerializeField] private float rotationSpeed = 1f;
     [SerializeField] private Transform followTarget;
     [SerializeField] FloatingJoystick joystick;
 
-    private Rigidbody rigidbody;
+    private new Rigidbody rigidbody;
 
     PhotonView view;
 
@@ -33,21 +32,13 @@ public class PlayerController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        Movement();
-    }
+        Vector2 verticalInput = joystick.Direction;
 
-    void Movement()
-    {
-        float verticalInput = joystick.Vertical;
-        float rotationInput = joystick.Horizontal;
+        Vector3 movementInput = Quaternion.Euler(0, followCamera.transform.eulerAngles.y, 0) * new Vector3(verticalInput.x, 0, verticalInput.y);
+        Vector3 movementDirection = movementInput * moveSpeed * 100;
 
-        followTarget.transform.eulerAngles = new Vector3(followTarget.transform.eulerAngles.x, followTarget.transform.eulerAngles.y + rotationInput, 0);
-
-        Vector3 movementInput = Quaternion.Euler(0, followTarget.transform.eulerAngles.y, 0) * new Vector3(0, 0, verticalInput);
-        Vector3 movementDirection = movementInput.normalized;
-
-        rigidbody.AddForce(movementDirection * moveSpeed * 100 * Time.deltaTime);
+        rigidbody.AddForce(movementDirection * Time.deltaTime);
     }
 }
