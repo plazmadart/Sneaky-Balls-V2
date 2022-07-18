@@ -28,11 +28,10 @@ public class SpawnManager : MonoBehaviourPunCallbacks
             player = PhotonNetwork.Instantiate(player.name, randomPosition, Quaternion.identity);
     }
 
-   /* public override void OnPlayerLeftRoom(Player otherPlayer)
+    public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-        PhotonNetwork.LeaveRoom();
-        PhotonNetwork.LoadLevel("MainMenu");
-    } */
+        base.OnPlayerLeftRoom(otherPlayer);
+    } 
 
     private void OnCollisionEnter(Collision collision)
     {

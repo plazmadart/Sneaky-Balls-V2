@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviourPunCallbacks
     public void JoinRoom()
     {
         PhotonNetwork.NickName = InputFieldNamePlayer.text;
-       // PhotonNetwork.JoinRoom(InputFieldNameRoom.text);
+        PhotonNetwork.JoinRoom(InputFieldNameRoom.text);
     }
 
     public override void OnJoinedRoom()
